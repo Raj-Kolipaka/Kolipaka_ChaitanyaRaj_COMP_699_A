@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AI Academic Expense & Loan Planner</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="navbar">
+    <div class="nav-container">
+
+        <h2 class="logo">AI Expense Planner</h2>
+
+        <nav class="nav-links">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/expenses">Expenses</a>
+            <a href="/loan">Loan</a>
+            <a href="/reports">Reports</a>
+            <a href="/logout" class="logout-link">Logout</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<!-- MAIN CONTENT -->
+<main class="main-content">
+    <div class="content-wrapper">
+        {% block content %}{% endblock %}
+    </div>
+</main>
+
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-container">
+        <p>© 2026 AI Academic Expense & Loan Planner</p>
+    </div>
+</footer>
+
+</body>
+</html>

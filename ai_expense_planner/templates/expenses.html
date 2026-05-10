@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="dashboard-container">
+
+    <h2>Manage Expenses</h2>
+
+    <!-- ADD EXPENSE -->
+    <div class="section">
+
+        <h3>Add Expense</h3>
+
+        <form action="/add_expense" method="POST" class="form-inline">
+
+            <input type="number" name="amount" placeholder="Amount" required>
+
+            <select name="category" required>
+                <option value="">Select Category</option>
+                <option value="tuition">Tuition</option>
+                <option value="rent">Rent</option>
+                <option value="food">Food</option>
+                <option value="travel">Travel</option>
+            </select>
+
+            <button type="submit">Add</button>
+
+        </form>
+
+    </div>
+
+
+    <!-- EXPENSE LIST -->
+    <div class="section">
+
+        <h3>Your Expenses</h3>
+
+        {% if expenses %}
+
+            <table class="table">
+
+                <tr>
+                    <th>Amount</th>
+                    <th>Category</th>
+                    <th>Date</th>
+                    <th>Action</th>
+                </tr>
+
+                {% for e in expenses %}
+                <tr>
+                    <td>₹ {{ e.amount }}</td>
+                    <td>{{ e.category }}</td>
+                    <td>{{ e.date }}</td>
+                    <td>
+                        <a href="/delete_expense/{{ e.id }}" class="delete-btn">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+
+            </table>
+
+        {% else %}
+            <p>No expenses added yet</p>
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock %}

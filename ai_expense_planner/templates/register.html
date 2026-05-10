@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+
+    <h2>Create Account</h2>
+
+    <!-- ERROR MESSAGE -->
+    {% if message %}
+        <div class="alert">{{ message }}</div>
+    {% endif %}
+
+    <!-- SUCCESS MESSAGE -->
+    {% if success %}
+        <div class="success">{{ success }}</div>
+    {% endif %}
+
+    <form method="POST" action="/register">
+
+        <input type="text" name="name" placeholder="Enter Full Name" required>
+
+        <input type="email" name="email" placeholder="Enter Email Address" required>
+
+        <input type="password" name="password" placeholder="Enter Password" required>
+
+        <button type="submit">Register</button>
+
+    </form>
+
+    <p>
+        Already have an account? 
+        <a href="/login">Login here</a>
+    </p>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="dashboard-container">
+
+    <h2>Admin Dashboard</h2>
+
+    <!-- SYSTEM SUMMARY -->
+    <div class="card-container">
+
+        <div class="card">
+            <h3>Total Users</h3>
+            <p class="highlight">{{ report.total_users or 0 }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Total Expenses</h3>
+            <p class="highlight">₹ {{ report.total_expenses or 0 }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Total Loans</h3>
+            <p class="highlight">{{ report.total_loans or 0 }}</p>
+        </div>
+
+    </div>
+
+    <!-- REPORT SECTION -->
+    <div class="section">
+        <h3>System Report</h3>
+
+        <p><strong>Users Registered:</strong> {{ report.total_users }}</p>
+        <p><strong>Total Expense Recorded:</strong> ₹ {{ report.total_expenses }}</p>
+        <p><strong>Total Loans Issued:</strong> {{ report.total_loans }}</p>
+
+    </div>
+
+</div>
+
+{% endblock %}

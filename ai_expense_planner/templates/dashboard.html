@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="dashboard-container">
+
+    <h2>Student Dashboard</h2>
+
+    <!-- SUMMARY CARDS -->
+    <div class="card-container">
+
+        <div class="card">
+            <h3>Monthly Expense</h3>
+            <p>₹ {{ monthly.total }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Yearly Expense</h3>
+            <p>₹ {{ yearly.total }}</p>
+        </div>
+
+        <div class="card">
+            <h3>Loan Progress</h3>
+
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: {{ progress }}%">
+                    {{ progress }}%
+                </div>
+            </div>
+
+        </div>
+
+        <div class="card">
+            <h3>Loan Duration</h3>
+            <p>{{ duration }} months</p>
+        </div>
+
+    </div>
+
+
+    <!-- PREDICTION -->
+    <div class="section">
+
+        <h3>Predicted Next Expense</h3>
+
+        {% if prediction.status %}
+            <p class="highlight">₹ {{ prediction.predicted_expense }}</p>
+        {% else %}
+            <p>No prediction available</p>
+        {% endif %}
+
+    </div>
+
+
+    <!-- SUGGESTIONS -->
+    <div class="section">
+
+        <h3>Smart Suggestions</h3>
+
+        {% if suggestions %}
+            <ul>
+                {% for s in suggestions %}
+                    <li>{{ s }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No suggestions yet</p>
+        {% endif %}
+
+    </div>
+
+
+    <!-- NOTIFICATIONS -->
+    <div class="section">
+
+        <h3>Notifications</h3>
+
+        {% if notifications %}
+            <ul>
+                {% for n in notifications %}
+                    <li>{{ n.message }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No notifications</p>
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock %}

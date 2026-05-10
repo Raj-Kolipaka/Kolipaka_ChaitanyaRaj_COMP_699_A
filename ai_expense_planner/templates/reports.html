@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="dashboard-container">
+
+    <h2>Reports</h2>
+
+    <!-- MONTHLY REPORT -->
+    <div class="section">
+
+        <h3>Monthly Report</h3>
+
+        <form method="GET" action="/reports" class="form-inline">
+
+            <input type="number" name="month" placeholder="Month (1-12)" required>
+            <input type="number" name="year" placeholder="Year (2026)" required>
+
+            <button type="submit">View</button>
+
+        </form>
+
+        {% if monthly_report %}
+            <p><strong>Total:</strong> ₹ {{ monthly_report.total }}</p>
+        {% endif %}
+
+    </div>
+
+
+    <!-- YEARLY REPORT -->
+    <div class="section">
+
+        <h3>Yearly Report</h3>
+
+        <form method="GET" action="/reports" class="form-inline">
+
+            <input type="number" name="year_only" placeholder="Year (2026)" required>
+
+            <button type="submit">View</button>
+
+        </form>
+
+        {% if yearly_report %}
+            <p><strong>Total:</strong> ₹ {{ yearly_report.total }}</p>
+            <p><strong>Entries:</strong> {{ yearly_report.count }}</p>
+        {% endif %}
+
+    </div>
+
+
+    <!-- EXPORT -->
+    <div class="section">
+
+        <h3>Export Report</h3>
+
+        <form method="GET" action="/export_report" class="form-inline">
+
+            <input type="number" name="year" placeholder="Year (2026)" required>
+
+            <button type="submit">Download</button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}
